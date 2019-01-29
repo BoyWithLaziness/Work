@@ -1,0 +1,40 @@
+.container {
+  text-align: center;
+}
+.row {
+  margin:25px auto;
+}
+
+.labels {
+  text-align: right;
+}
+
+.inputs {
+
+}
+.logout-option {
+  text-align: right;
+}
+.image-box
+{
+  border:solid 2px;
+}
+.user-data-box {
+  border:solid 2px;
+}
+img {
+  height:100px;
+  width:auto;
+}
+.my-left {
+  float:right;
+  background-color: #60adff;
+}
+.user-pic {
+  height:500px;
+  width:500px;
+}
+.my-right {
+  float:left;
+  background-color: #007bff;
+}

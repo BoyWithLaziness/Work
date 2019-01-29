@@ -1,0 +1,35 @@
+.container {
+
+  text-align: center;
+}
+.row {
+  text-align: center;
+}
+
+.login-option {
+  color:#fff;
+  background-color: #428bca;
+  border: 2px solid #5cb85c;
+  border-radius: 2px;
+  padding: 5%;
+
+}
+.register-option {
+  color:#fff;
+  background-color: #428bca;
+  border: 2px solid #5cb85c;
+  border-radius: 2px;
+  padding: 5%;
+
+}
+.login-option:hover {
+  color: #000000;
+  background-color:#2873b4 ;
+
+}
+
+.register-option:hover {
+  color: #000000;
+  background-color: #2873b4;
+
+}

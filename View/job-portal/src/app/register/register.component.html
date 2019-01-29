@@ -1,0 +1,424 @@
+<div class="container" [formGroup]="registerForm">
+  <h2 class="alert alert-success">
+    Register yourself here!
+  </h2>
+  <div class="row">
+    <div class="col-md-4 labels">
+      First Name:
+    </div>
+    <div class="col-md-4 inputs">
+      <input
+      formControlName="firstName"
+      [class.is-invalid] ="firstName.invalid && firstName.touched"
+      type="text"
+      class="form-control"
+      name=""
+      value=""
+      placeholder="Enter your first name">
+      <div
+      [class.d-none]="firstName.valid || firstName.untouched"
+      class="text-danger">
+      First Name is required!
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-4 labels">
+    Last Name:
+  </div>
+  <div class="col-md-4 inputs">
+    <input
+    formControlName="lastName"
+    [class.is-invalid] ="lastName.invalid && lastName.touched"
+    type="text"
+    class="form-control"
+    name=""
+    value=""
+    placeholder="Enter your last name">
+
+    <div
+    [class.d-none]="lastName.valid || lastName.untouched"
+    class="text-danger">
+    Last Name is required!
+  </div>
+</div>
+</div>
+
+<div class="row">
+  <div class="col-md-4 labels">
+    Birth Date:
+  </div>
+  <div class="col-md-4 inputs">
+    <input
+    formControlName="birthDate"
+    [class.is-invalid] ="birthDate.invalid && birthDate.touched"
+    type="text"
+    placeholder="Select Your Birth Date"
+    class="form-control"
+    bsDatepicker>
+    <div
+    [class.d-none]="birthDate.valid || birthDate.untouched"
+    class="text-danger">
+    Birth Date is required!
+  </div>
+
+</div>
+</div>
+
+<div class="row">
+  <div class="col-md-4 labels">
+    Gender:
+  </div>
+  <div class="col-md-4 inputs radio">
+
+    <label class="radio-inline">
+      <input
+      formControlName="gender"
+      type="radio"
+      name="gender"
+      value="Male">&nbsp;Male
+
+    </label> &nbsp;
+    <label class="radio-inline">
+      <input
+      formControlName="gender"
+      type="radio"
+      name="gender"
+      value="Female">&nbsp;Female
+    </label>
+    <div
+    [class.d-none]="gender.valid || gender.untouched"
+    class="text-danger">
+    Gender is required!
+  </div>
+
+</div>
+</div>
+
+<div class="row">
+  <div class="col-md-4 labels">
+    Hobbies:
+  </div>
+  <div class="col-md-4 inputs checkbox" [formGroup]="hobbies">
+    <label class="checkbox-inline">
+      <input
+      formControlName="Cricket"
+      type="checkbox"
+      [(ngModel)]="checkCricketValue"
+      (change)="onCheckboxChange($event, 'Cricket')">
+      &nbsp;Cricket
+    </label>&nbsp;&nbsp;
+    <label class="checkbox-inline">
+      <input
+      formControlName="Dancing"
+      type="checkbox"
+      [(ngModel)]="checkDancingValue"
+      (change)="onCheckboxChange($event, 'Dancing')">
+      &nbsp;Dancing
+    </label>&nbsp;&nbsp;
+    <label class="checkbox-inline">
+      <input
+      formControlName="Singing"
+      type="checkbox"
+      [(ngModel)]="checkSingingValue"
+      (change)="onCheckboxChange($event, 'Singing')">
+      &nbsp;Singing
+    </label>&nbsp;&nbsp;
+    <label class="checkbox-inline">
+      <input
+      formControlName="Acting"
+      type="checkbox"
+      [(ngModel)]="checkActingValue"
+      (change)="onCheckboxChange($event, 'Acting')">
+      &nbsp;Acting
+    </label>&nbsp;&nbsp;
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-4 labels">
+    Phone Number:
+  </div>
+  <div class="col-md-4 inputs">
+    <input
+    formControlName="phoneNumber"
+    [class.is-invalid] ="phoneNumber.invalid && phoneNumber.touched"
+    type="text"
+    class="form-control"
+    name=""
+    value=""
+    specialCharacters="[ '(' ,')' , '-' ]"
+    mask='(000)000-0000'
+    placeholder="Enter your phone number">
+    <div
+    [class.d-none]="phoneNumber.valid || phoneNumber.untouched || phoneNumber.errors?.pattern"
+    class="text-danger">
+    Phone Number is required!
+  </div>
+
+  <div
+  *ngIf ="phoneNumber.errors?.pattern"
+  class="text-danger">
+  Should Contain only numbers
+  <br>
+  Length should be of ten
+</div>
+</div>
+</div>
+
+<div class="row">
+  <div class="col-md-4 labels">
+    Address:
+  </div>
+  <div class="col-md-4 inputs">
+    <textarea
+    formControlName="address"
+    class="form-control"
+    name="name"
+    rows="4"
+    cols="25"
+    placeholder="Enter your current address"></textarea>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-4 labels">
+    City:
+  </div>
+  <div class="col-md-4 inputs">
+    <input
+    formControlName="city"
+    [class.is-invalid] ="city.invalid && city.touched"
+    type="text"
+    class="form-control"
+    name=""
+    value=""
+    placeholder="Enter your current city">
+    <div
+    [class.d-none]="city.valid || city.untouched"
+    class="text-danger">
+    City is required!
+  </div>
+</div>
+</div>
+
+<div class="row">
+  <div class="col-md-4 labels">
+    State:
+  </div>
+  <div class="col-md-4 inputs">
+    <select
+    formControlName="state"
+    class="form-control"
+    name="city"
+    *ngIf="States">
+    <option *ngFor="let stateValue of States"  [value]="stateValue.State">
+      {{stateValue.State}}
+    </option>
+
+  </select>
+  <div
+  [class.d-none]="state.invalid || state.untouched"
+  class="text-danger">
+  State is required!
+</div>
+</div>
+</div>
+
+<div class="row">
+  <div class="col-md-4 labels">
+    Zipcode:
+  </div>
+  <div class="col-md-4 inputs">
+    <input
+    formControlName="zipCode"
+    [class.is-invalid] ="zipCode.invalid && zipCode.touched"
+    type="text"
+    class="form-control"
+    placeholder="Enter your curret city's zip code">
+
+    <div
+    [class.d-none]="zipCode.valid || zipCode.untouched || zipCode.errors?.pattern"
+    class="text-danger">
+    Zip Code is required!
+  </div>
+  <div
+  *ngIf ="zipCode.errors?.pattern"
+  class="text-danger">
+  Should Contain only numbers
+  <br>
+  Length should be of 6
+</div>
+</div>
+</div>
+
+<div class="row">
+  <div class="col-md-4 labels">
+    Email:
+  </div>
+  <div class="col-md-4 inputs">
+    <input
+    formControlName="email"
+    [class.is-invalid] ="email.invalid && email.touched"
+    type="text"
+    class="form-control"
+    value=""
+    [(ngModel)]="checkEmail"
+    placeholder="Enter your valid email address">
+    <div
+    [class.d-none]="email.valid || email.untouched"
+    class="text-danger">
+    Correct Email is required!
+  </div>
+  <div class="text-info"  *ngIf="email.dirty">
+    Checked  {{checkEmail}} in our database
+  </div>
+  <div class="text-danger" *ngIf="(uniqueEmailTruthValue === true)">
+    Email address already exists, please type in another
+  </div>
+  <div class="text-success" *ngIf="email.valid" [class.d-none]="(uniqueEmailTruthValue === true) || email.untouched || email.pristine ">
+    Email address valid
+  </div>
+</div>
+</div>
+
+
+<div class="row">
+  <div class="col-md-4 labels">
+    Username:
+  </div>
+  <div class="col-md-4 inputs">
+    <input
+    formControlName="userName"
+    [class.is-invalid] ="userName.invalid && userName.touched"
+    type="text"
+    class="form-control"
+    value=""
+    [(ngModel)]="checkUsername"
+    placeholder="Enter your username" >
+    <div
+    [class.d-none]="userName.valid || userName.untouched"
+    class="text-danger">
+    Username is required!
+  </div>
+  <div class="text-info"  *ngIf="userName.dirty">
+    Checked  {{checkUsername}} in our database
+  </div>
+  <div class="text-danger" *ngIf="uniqueUsernameTruthValue === true">
+    Username  already exists, please type in another
+  </div>
+  <div class="text-success" *ngIf="userName.valid" [class.d-none]="(uniqueUsernameTruthValue === true) || userName.untouched || userName.pristine ">
+    Username valid
+  </div>
+</div>
+</div>
+
+
+<div class="row">
+  <div class="col-md-4 labels">
+    Password:
+  </div>
+  <div class="col-md-4 inputs">
+    {{password.valid}} {{password.invalid}}
+    {{ password.pristine}}  {{password.touched}}
+    <input
+    formControlName="password"
+    [class.is-invalid] ="password.invalid && password.touched"
+    type="text"
+    class="form-control"
+    placeholder="Enter your password">
+    <div
+    [class.d-none]="password.valid || password.untouched"
+    class="text-danger">
+    Correct format password is required!<br>
+    <div class="text-info">
+      Should be atmost 8 characters<br>
+      Should be atleast 4 characters <br>
+      Should contain atleast one number,one special symbol <br>
+      And it should start with alphabet <br>
+    </div>
+  </div>
+  <!--
+  <div
+  *ngIf="password.errors.minLength"
+  class="text-danger">
+  Should be atleast 4 characters
+</div>
+
+<div
+*ngIf="password.errors.maxLength"
+class="text-danger">
+Should be atmost 8 characters
+</div>
+
+<span class="alert alert-danger" *ngIf="false">
+Should contain atleast one number and symbol
+</span> -->
+</div>
+</div>
+
+<div class="row">
+  <div class="col-md-4 labels">
+    Confirm Password:
+  </div>
+  <div class="col-md-4 inputs">
+    <input
+    formControlName="passwordAgain"
+    [class.is-invalid] ="passwordAgain.invalid && passwordAgain.touched"
+    type="text"
+    class="form-control"
+    placeholder="Enter above password again">
+    <div
+    [class.d-none]="passwordAgain.valid || passwordAgain.untouched"
+    class="text-danger">
+    Confirm Password is invalid!
+  </div>
+  <div
+  *ngIf = "registerForm.errors?.misMatch"
+  class="text-danger">
+  Passwords do not match!
+
+</div>
+
+
+
+</div>
+</div>
+
+
+<div class="row">
+  <div class="col-md-4 labels">
+    Profile Picture:
+  </div>
+  <div class="col-md-4 inputs">
+    <input
+    formControlName="profilePicture"
+    [class.is-invalid] ="profilePicture.invalid && profilePicture.touched"
+    type="file"
+    class="form-control"
+    name="file"
+    (change)="onFileChange($event)"
+    />
+
+    <div class="text-danger" *ngIf="profilePicture.errors?.required && profilePicture.touched">
+      Image is required
+    </div>
+    <div class="text-danger" *ngIf="!image_size && profilePicture.touched">
+      Size should be less than 2 MB
+    </div>
+    <div class="text-danger" *ngIf="!image_type && profilePicture.touched" >
+      Only jpg,jpeg,png image types allowed
+    </div>
+  </div>
+</div>
+<br>
+<button
+class="btn btn-primary"
+type="submit"
+[class.disabled]="registerForm.invalid || !image_size || !image_type"
+(click)="addData()">
+Register
+</button>
+<pre>{{registerForm.value | json}}</pre>
+</div>
