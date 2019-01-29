@@ -1,0 +1,39 @@
+Register Candidate Page fields:
+--------------------------------------------------------------------------------
+First Name: Required
+Last Name: Required
+Birth Date: Required, Text - Should be Date
+Gender: Required, Radio - ENUM(Male, Female)
+Hobbies: Optional, Checkbox - ENUM(Cricket, Dancing, Singing, Acting)
+Phone No: Required, Text, Max Length(10)
+
+Address: Optional, textarea - Multiline
+City: Required, text,
+State: Required, Select - Create API to get indian States (for time being show only few)
+Zipcode: Required, Fix Length(6), Number only
+
+Email: Required, Text, Should be valid email
+Password: Required, Min(4), Max(8), Should start with alphabets, should have atleast one number and one symbol, validate using regex
+Confirm Password: Required, Should match with Password
+--------------------------------------------------------------------------------
+1. Create the register page candidates as above and required APIs
+2. Make email be unique
+3. Add username field, text, only small case, should be unique, check availability and show in real time
+4. Add profile Picture functionality
+    Profile Picture: Required, File, Should accept only jpg, png having size less than 2MB
+5. Add ngx bootstrap, use the date picker for birth date
+6. Add masking to Phone no to use USA standard phone nos
+7. Add the toaster messages when actions are completed using plugin(whenever needed)
+8. Make use of bootstrap framework only for css purpose not jquery/javascript
+9. Create the git repo for the project
+10.Create the dashboard page, show some photos of yourself in tiles format (no fancy design needed)
+10. Create the login, registered candidates should be able to login with username and password
+    once entered the right credentials, redirectTo to the dashboard
+11. Use auth guards to prevent accessing the dashboard page without login
+12. Also, make sure if someone who is already logged in and trying to access the login page
+      redirectTo dashboard, Similarly if user tries to access the dashboard without login, redirectto login page with message
+13. Create the functionality to recover the password using forgot password page.
+        * User will enter the registered email
+        * System will send the email with reset password link
+        * User sets the new password
+------------------------------------------------------------------------

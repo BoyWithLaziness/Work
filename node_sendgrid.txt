@@ -1,0 +1,27 @@
+const APIKEY = "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";
+sendgrid.setApiKey(APIKEY);
+const msg = {
+  to: req.body.email,
+  from: 'noreply@JobPortal.com',
+  subject: 'Sending with SendGrid is Fun-JobPortal',
+  text: 'and easy to do anywhere, even with Node.js',
+  html: `
+        <p>Hello,</p>
+        <p>This is JobPortal.</p>
+        <p>Click
+        <a href="http://localhost:4200/set-password/${req.body.email}" target="_blank">here</a>
+        <input type="hidden" id="hiddenEmail" name="hiddenEmail" value="${req.body.email}">
+        to reset password.
+        </p>
+        <p>For ${req.body.email}</p>`,
+};
+sendgrid.send(msg,function(err,json) {
+  if(err) {
+    console.log("Mail not Sent")
+    console.log(err)
+  }
+  else {
+    console.log("Mail Sent")
+    //console.log(json)
+  }
+});

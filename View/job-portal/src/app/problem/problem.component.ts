@@ -18,4 +18,8 @@ export class ProblemComponent implements OnInit {
       console.log(str);
     }
 
+    gotoLogin():void {
+      this.router.navigateByUrl('/login')
+    }
+
   }
