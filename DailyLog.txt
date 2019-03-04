@@ -1,9 +1,0 @@
-Job Portal
-	
-14/1/19
-	
-	-Project work started at 14:00
-	-Completed with the basic views of the project at 18:29
-
-15/1/19
-	-Started with form validations at 9:40
